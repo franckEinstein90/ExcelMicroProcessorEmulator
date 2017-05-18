@@ -1,0 +1,14 @@
+'option explicit
+
+'Assumes the following ranges are defined in the spreadsheet: 
+- eip         The instruction pointer
+- progStart   The location of the address of the first program instruction
+
+Sub nextInstruction()
+    Dim currentProgAddress As String
+    currentProgAddress = ThisWorkbook.Names("eip").RefersToRange(1, 1)
+    ThisWorkbook.Names("eip").RefersToRange(1, 1) = nextAddress(currentProgAddress)
+End Sub
+Sub resetProg()
+    ThisWorkbook.Names("eip").RefersToRange(1, 1) = ThisWorkbook.Names("progStart").RefersToRange(1, 1)
+End Sub
